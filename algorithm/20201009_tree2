@@ -1,0 +1,88 @@
+## 트리문제
+### 백준 1135 뉴스 전하기
+
+using namespace std;
+
+#include <cstdio>
+#include <iostream>
+#include <vector>
+
+int caseN;
+int depth;
+
+typedef struct NODE {
+	int parent;
+	int self;
+	vector<NODE*> child;
+	
+}NODE;
+NODE* root;
+
+NODE* create(int _parent, int _self) {
+	NODE* temp = new NODE;
+	temp->parent = _parent;
+	temp->self = _self;
+	return temp;
+};
+
+void makeTree(NODE* node ,int number ,int parentV) {
+	
+	if (node==NULL && parentV == -1) {
+		root = create(parentV, number);
+		return ;
+	}
+	if (node->self == parentV) {
+		node->child.push_back( create(parentV, number) );
+		return;
+	}
+
+	for (int i=0;i< node->child.size();++i)
+		makeTree(node->child[i], number, parentV);
+}
+int max(int a, int b) { return a>=b?a:b; }
+
+int calculateDepth(NODE* node) {
+	if (node == NULL) return 0;
+	int temp[50];
+
+	for (int i = 0; i < node->child.size(); ++i)
+			depth = max(depth, 1 + i + calculateDepth(node->child[i]));
+
+	// child 간의 depth 와 child 의 child 의 갯수가 다르다
+	// 즉, 시간이 다르다.
+}
+
+
+int main(void) {
+
+	int emp;
+	cin >> caseN;
+	root = NULL;
+	depth = 0;
+
+	for (int i = 0; i < caseN; ++i) {
+		cin >> emp;
+		makeTree(root, i, emp);
+	}
+	// index = 사원번호, value = 부모노드
+	cout << calculateDepth(root) << endl;
+
+	return 0;
+
+}
+
+--------------------------------------------------------
+### 문제 접근 :
+계층구조이기에 트리를 구현, 재귀를 통한 깊이 계산, 이후 시간을 구함
+
+한계)
+depth 와 time 의 혼동, 집중력 저하
+
+문제 못푸는 제한)
+한 노드당 1초씩 지나가는것을 어떻게 구현할지를 고안해야함.
+
+밥먹고 다시 풀기
+1) 노드당 걸리는 시간을 걸어서 각 부분합의 최대를 구해보자.
+- 한 부모의 자식노드간에 계산시 걸리는 시간을 제한 해야함.
+
+2) 각자의 node간 걸리는 시간을 sort 한 수 가장 큰수부터 0 ~ n-1 까지 더해서 max 를 한다. 
