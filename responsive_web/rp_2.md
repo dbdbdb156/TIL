@@ -40,13 +40,14 @@ ex)
 : 화면의 보이는 영역을 다루는 기술, 뷰포트
 -실제 내용이 표시되는 영역, 데스크톱은 해상도, 스마트기기는 기본으로 설정되있는 값 
 
-뷰포트문법) ** 잘 외워둬야함
--width : device-width,양수
--height : device-height,양수
--initial-scale : 양수 / 뷰포트의 초기 배율 기본값 1
--user-scalable : yes or no / 뷰포트의 확대,축소 여부 지정, yes 하면 페이지 확대 가능
--minimum-scale : 양수 / 기본값 0.25
--maximum-scale : 양수 / 기본값 5.0
+#### 뷰포트문법) ** 잘 외워둬야함
+
+- width : device-width,양수
+- height : device-height,양수
+- initial-scale : 양수 / 뷰포트의 초기 배율 기본값 1
+- user-scalable : yes or no / 뷰포트의 확대,축소 여부 지정, yes 하면 페이지 확대 가능
+- minimum-scale : 양수 / 기본값 0.25
+- maximum-scale : 양수 / 기본값 5.0
 
 1. 데스크톱 뷰포트 영역 : 가변
 2. 스마트기기 : 익스플로러(1024px)를 제외한 웹키트 기반 브라우저는 980px
