@@ -1,0 +1,120 @@
+# 알고리즘
+## 구현
+### 백준
+1. 18808 스티커 붙이기
+풀이 : 행렬로서의 회전, 도형 맞추기 문제
+
+https://www.acmicpc.net/problem/18808
+
+코드>
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class Main {
+    
+	public static int row,col,num;
+	public static int nr,nc;
+	public static int [][]map;
+	
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        
+        row = Integer.parseInt(st.nextToken());
+        col = Integer.parseInt(st.nextToken());
+        num = Integer.parseInt(st.nextToken());
+        
+        map = new int[row][col];
+        
+        for(int k=0;k<num;++k) {
+        	st = new StringTokenizer(br.readLine());
+        	int nr = Integer.parseInt(st.nextToken());
+        	int nc = Integer.parseInt(st.nextToken());
+        	int [][]s = new int[nr][nc];
+        	
+        	for(int i=0;i<nr;++i) {
+        		st = new StringTokenizer(br.readLine());
+        		for(int j=0;j<nc;++j) {
+        			s[i][j] = Integer.parseInt(st.nextToken());
+        		}
+        	}
+        	boolean check =true;
+        	
+        	for(int cnt=0;cnt<4 && check;++cnt) {	
+        		
+        		for(int i=0;i<=row-nr&&check;++i) 
+        			for(int j=0;j<=col-nc&&check;++j) 
+        				if(isPossible(s,i,j,nr,nc)){
+        					draw(s,i,j,nr,nc);
+        					
+        					check = false;
+        				}
+        		if(cnt==3) continue;
+        		if(check) { 
+        			s = rotate(s,nr,nc,cnt);
+        			int temp = nr;
+        			nr = nc;
+        			nc = temp;
+        		}
+        	}
+        	if(!check) continue;
+        	// 색칠 못헀으면 회전해야해
+        	
+        }
+        int sum =0;
+        for(int i=0;i<row;++i)
+        	for(int j=0;j<col;++j)
+        		if(map[i][j]==1)
+        			sum++;
+        System.out.println(sum);
+        
+    }
+    public static boolean isPossible(int checkmap[][],int rp,int cp,int r,int c) {
+    	for(int i=0;i<r;++i) {
+    		for(int j=0;j<c;++j) {
+    			if(checkmap[i][j]==1 && map[i+rp][j+cp]==1) 
+    				return false;
+    		}
+    	}
+    	return true;
+    }
+    public static void draw(int checkmap[][],int rp,int cp, int r,int c) {
+    	for(int i=0;i<r;++i) 
+    		for(int j=0;j<c;++j) 
+    			if(checkmap[i][j]==1 && map[i+rp][j+cp]==0)
+    				map[i+rp][j+cp]= checkmap[i][j];
+    }
+    public static int[][] rotate(int checkmap[][],int r,int c,int cnt) {
+    	int temp[][] = new int[c][r];
+    	
+    	for(int i=0;i<c;++i)
+    		for(int j=0;j<r;++j){
+    			temp[i][j] = checkmap[r-1-j][i];
+    		}
+    	
+    	return temp;
+    }
+    
+}
+
+
+
+
+
+2. 2578 빙고
+- 참고 : 각 벽의 끝을 나타낼때는 범위로 마무리할수 있다.
+ex) if(v<n && v>=0){}
+https://www.acmicpc.net/problem/2578
+
+3. 5597 과제 안 내신 분..?
+- set 이용
+https://www.acmicpc.net/problem/5597
+
+4. 1913 달팽이
+- 원래 수가 쌓이는 반대방향으로 구현시 더 편리
+: 1부터가 아닌 n^2 부터 하감식
+https://www.acmicpc.net/problem/1913
