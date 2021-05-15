@@ -20,3 +20,12 @@ https://www.acmicpc.net/problem/1167
 
 https://www.acmicpc.net/problem/1967
 
+3. 트리
+- Graph 로 트리를 풀면 된다. dfs 를 사용하면 된다. point == delete 인 경우를 예외처리 해줘야한다.
+* delete 처리 방법
+1) graph 에서 delete node 를 다 지운다. 시간 O(n^2)
+2) grpah 를 읽을 때, 다음노드를 확인할때(for문 돌때) 확인 하지 않는 조건문을 넣어주면된다. O(n^2) 똑같다
+-> 어떤것이 코드가 깔끔하냐의 문제다.
+
+https://www.acmicpc.net/problem/1068
+
