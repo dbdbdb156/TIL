@@ -7,5 +7,18 @@
 - 애로사항 : 
 1) lower , upper bound 함수를 사용할때 범위를 초과했을때의 예외처리
 2) +, - 의 함수에서 가장 작은 수 2가지가 나올수 있음.
+- 근거 :
+1) n 은 최대 10만, 속해있는 값은 -10억~10억 범위. 인덱스를 값의 범위로 나타낼수 있음.
 
 https://www.acmicpc.net/problem/2470
+
+2. 11728 배열 합치기
+- 풀이 : 배열 sorting 후 병합과정. 두개의 배열의 index 를 관리함
+
+https://www.acmicpc.net/problem/11728
+
+3. 20922 겹치는 건 싫어
+- 풀이 : 각 수를 기준으로 배열의 value 값을 관리함으로 가장 큰 길이를 구함. deque를 사용하기 좋은 문제.
+즉, 슬라이딩 윈도우 기법
+
+https://www.acmicpc.net/problem/20922
