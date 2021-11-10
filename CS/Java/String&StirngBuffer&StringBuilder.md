@@ -1,10 +1,10 @@
 # String, StringBuffer, StringBuilder 차이
 
 
-      |  String    | StringBuffer       |   StringBuilder
-변경   |  Immutable |  mutable           |     mutable
-동기화  |            | Synchronized 가능  |  Sychronized 불가능
-                    (Thread-safe)
+|---|String|StringBuffer|StringBuilder|
+|---|---|---|
+|변경|Immutable|mutable|mutable|
+|동기화||Synchronized 가능(Thread-safe)|Sychronized 불가능|
 
 ## 1. String
 - new 연산으로 생성된 인스턴스 메모리 공간 변동 없음
