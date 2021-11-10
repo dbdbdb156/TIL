@@ -2,7 +2,7 @@
 
 
 |---|String|StringBuffer|StringBuilder|
-|---|---|---|
+|---|---|---|---|
 |변경|Immutable|mutable|mutable|
 |동기화||Synchronized 가능(Thread-safe)|Sychronized 불가능|
 
